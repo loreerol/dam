@@ -11,6 +11,15 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Roboto, sans-serif",
+    h6: {
+      fontSize: "1rem",
+      marginBottom: 15,
+      fontWeight: 600
+    },
+    body2: {
+      lineHeight: 1,
+      marginBottom: 10
+    }
   },
 });
 
