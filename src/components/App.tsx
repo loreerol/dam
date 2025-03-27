@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Container, Typography } from "@mui/material";
-
-import { Asset } from "../types";
+import { Box, Container, Typography } from "@mui/material";
+import { Asset } from "./Gallery/types";
 import mockData from "./mockData";
-import ContentCard from "./ContentCard";
+import GalleryPage from "./Gallery/GalleryPage";
 
 const App = () => {
   const [data, setData] = useState<Asset[]>([]);
@@ -13,14 +12,15 @@ const App = () => {
   }, []);
 
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4" gutterBottom>
-        DAM, what great content!
-        {data.map((item) => (
-          <ContentCard key={item.id} item={item} />
-        ))}
-      </Typography>
-    </Container>
+    <Box >
+      <Container>
+        <Typography variant="h4" gutterBottom>
+          DAM, what great content!
+        </Typography>
+      <GalleryPage data={data} />
+
+      </Container>
+    </Box>
   );
 };
 
