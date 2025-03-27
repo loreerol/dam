@@ -1,13 +1,27 @@
-import { Container, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Container, Typography } from "@mui/material";
+import { Asset } from "./Gallery/types";
+import mockData from "./mockData";
+import GalleryPage from "./Gallery/GalleryPage";
 
-function App() {
+const App = () => {
+  const [data, setData] = useState<Asset[]>([]);
+
+  useEffect(() => {
+    setData(mockData);
+  }, []);
+
   return (
-    <Container maxWidth="sm">
-      <Typography variant="h4" gutterBottom>
-        DAM, what great content!
-      </Typography>
-    </Container>
+    <Box >
+      <Container>
+        <Typography variant="h4" gutterBottom>
+          DAM, what great content!
+        </Typography>
+      <GalleryPage data={data} />
+
+      </Container>
+    </Box>
   );
-}
+};
 
 export default App;
