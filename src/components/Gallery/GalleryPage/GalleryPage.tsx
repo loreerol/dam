@@ -16,6 +16,7 @@ const GalleryPage = ({ data }: GalleryPageProps) => (
         display: "grid",
         gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
         gap: 3,
+        marginTop: "50px"
       }}
     >
       {data.map((item, index) => (

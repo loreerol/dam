@@ -1,7 +1,12 @@
-import { useEffect, useState } from "react";
-import { Box, Container, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Container from "@mui/material/Container";
+
 import { Asset } from "./Gallery/types";
 import mockData from "./mockData";
+import Header from "./PageControls/Header";
+import SideBar from "./PageControls/SideBar";
 import GalleryPage from "./Gallery/GalleryPage";
 
 const App = () => {
@@ -12,16 +17,15 @@ const App = () => {
   }, []);
 
   return (
-    <Box >
+    <Box sx={{ display: "flex" }}>
+      <Header />
+      <SideBar />
+      <Toolbar />
       <Container>
-        <Typography variant="h4" gutterBottom>
-          DAM, what great content!
-        </Typography>
-      <GalleryPage data={data} />
-
+        <Toolbar />
+        <GalleryPage data={data} />
       </Container>
     </Box>
   );
 };
-
 export default App;

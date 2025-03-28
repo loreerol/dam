@@ -5,7 +5,6 @@ import { styled } from "@mui/material/styles";
 const StyledCardBase = styled(CardBase)({
   width: 250,
   padding: "15px",
-  backgroundColor: "#eff0eb",
   display: "flex",
   flexDirection: "column",
 });
