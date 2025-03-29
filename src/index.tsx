@@ -5,16 +5,22 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme";
 import App from "./components/App";
+import { FilterProvider } from "./contexts/FilterContext";
+import { FavoritesProvider } from "./contexts/FavoritesContext";
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+    <FilterProvider>
+      <FavoritesProvider>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </FavoritesProvider>
+    </FilterProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

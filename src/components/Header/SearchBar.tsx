@@ -2,7 +2,12 @@ import React from 'react';
 import { InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = () => (
+interface SearchBarProps {
+  label: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
+}
+
+const SearchBar = ({handleChange, label}:SearchBarProps) => (
   <div style={{
     display: 'flex', 
     backgroundColor: 'rgba(255, 255, 255, 0.15)', 
@@ -14,11 +19,12 @@ const SearchBar = () => (
       <SearchIcon sx={{color: "white"}} />
     </IconButton>
     <InputBase
-      placeholder="Search By Filename"
-      sx={{ ml: 1, flex: 1, color: 'inherit' }}
-      inputProps={{ 'aria-label': 'search' }}
+      placeholder={label}
+      color='primary'
+      aria-label={label}
+      onChange={handleChange}
     />
   </div>
 );
 
-export { SearchBar };
+export default SearchBar;

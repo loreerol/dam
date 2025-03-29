@@ -15,4 +15,4 @@ const TitleContainer = ({ children }: MediaContainerProps) => (
   <TitleContainerBase> {children}</TitleContainerBase>
 );
 
-export { TitleContainer };
+export default TitleContainer ;

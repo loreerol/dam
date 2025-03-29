@@ -11,4 +11,4 @@ const StyledCardBase = styled(CardBase)({
 
 const Card = (props: CardProps) => <StyledCardBase {...props} />;
 
-export { Card };
+export default Card;

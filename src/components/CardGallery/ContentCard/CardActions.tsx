@@ -12,4 +12,4 @@ const CardActions = (props: CardActionsProps) => (
   <StyledCardActionBase {...props} />
 );
 
-export { CardActions };
+export default CardActions;

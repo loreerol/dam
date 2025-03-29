@@ -1,4 +1,4 @@
-import { Asset } from "./Gallery/types";
+import { Asset } from "./components/types";
 
 const mockData: Asset[] = [
   {
