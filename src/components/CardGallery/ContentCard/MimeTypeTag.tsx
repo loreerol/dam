@@ -15,4 +15,4 @@ const MimeTypeTagBase = styled(Typography)({
 
 const MimeTypeTag = (props: TypographyProps) => <MimeTypeTagBase {...props} />;
 
-export { MimeTypeTag };
+export default MimeTypeTag;

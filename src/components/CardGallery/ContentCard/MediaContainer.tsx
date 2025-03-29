@@ -19,4 +19,4 @@ const MediaContainer = ({ children }: MediaContainerProps) => (
   <MediaContainerBase>{children}</MediaContainerBase>
 );
 
-export { MediaContainer };
+export default MediaContainer;

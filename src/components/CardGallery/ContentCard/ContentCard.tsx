@@ -1,31 +1,38 @@
-import * as React from "react";
+import React, {useContext} from "react";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
 import DownloadIcon from "@mui/icons-material/Download";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-import { formatSnakeCase, formatMimeType, formatDate } from "./utils";
-import { Asset } from "../types";
-import { Card } from "../Card";
-import { MediaContainer } from "../MediaContainer";
-import { MimeTypeTag } from "../MimeTypeTag";
-import { TitleContainer } from "../TitleContainer";
-import { CardActions } from "../CardActions";
+
+import { formatSnakeCase, getFileExtention, formatDate } from "../../utils";
+import { Asset } from "../../types";
+import  Card  from "./Card";
+import MediaContainer  from "./MediaContainer";
+import MimeTypeTag from "./MimeTypeTag";
+import TitleContainer from "./TitleContainer";
+import CardActions  from "./CardActions";
 import { useIsTruncated } from "../hooks/useIsTruncated";
-import Tooltip from "@mui/material/Tooltip";
+
+import { FavoritesContext } from "../../../contexts/FavoritesContext";
+
 
 type ContentCardProps = {
   item: Asset;
 };
 
 const ContentCard = ({ item }: ContentCardProps) => {
+  const {toggleFavorite, favorites} = useContext(FavoritesContext)
+  const isFavorited = favorites.includes(item.id);
   const formattedFileName = formatSnakeCase(item.fileName);
   const { isTruncated, textRef } = useIsTruncated(formattedFileName);
-  const formatedMimeType = formatMimeType(item.mimeType);
+  const fileExtention = getFileExtention(item.mimeType);
   const formatedCreatedDate = formatDate(item.createdAt);
   const formatedModiedDate = formatDate(item.modifiedAt);
+
 
   return (
     <Card>
@@ -39,7 +46,7 @@ const ContentCard = ({ item }: ContentCardProps) => {
             objectFit: "contain",
           }}
         />
-        <MimeTypeTag>{formatedMimeType}</MimeTypeTag>
+        <MimeTypeTag>{fileExtention}</MimeTypeTag>
       </MediaContainer>
       <CardContent
         sx={{
@@ -60,8 +67,8 @@ const ContentCard = ({ item }: ContentCardProps) => {
         <Typography variant="body2">Modified: {formatedModiedDate}</Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites" onClick={() => toggleFavorite(item.id)}>
+          <FavoriteIcon color={isFavorited ? "error" : "inherit"}/>
         </IconButton>
         <IconButton aria-label="download">
           <DownloadIcon />
