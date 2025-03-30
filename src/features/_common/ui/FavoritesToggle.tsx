@@ -2,6 +2,7 @@ import Switch from "@mui/material/Switch";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+// To do: Make this toggle more reusable by having it accept an icon and styling as props
 
 interface FavoritesToggleProps {
   checked: boolean;

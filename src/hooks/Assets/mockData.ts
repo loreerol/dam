@@ -1,4 +1,4 @@
-import { Asset } from "../types";
+import { Asset } from "../../types";
 
 const mockData: Asset[] = [
   {
@@ -353,10 +353,4 @@ const mockData: Asset[] = [
   },
 ];
 
-
-export const mockAssetService = {
-    fetchAssets: (delay = 1000): Promise<Asset[]> => 
-      new Promise(resolve => 
-        setTimeout(() => resolve(mockData), delay)
-      )
-  };
+export default mockData;

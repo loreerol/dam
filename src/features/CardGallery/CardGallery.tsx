@@ -9,13 +9,21 @@ import { Asset } from "../../types";
 interface CardGalleryProps {
   data: Asset[];
   loading: boolean;
+  error: Error | null;
 }
 
-const CardGallery = ({ data, loading }: CardGalleryProps) => {
+const CardGallery = ({ data, loading, error }: CardGalleryProps) => {
   if (loading) {
     return (
       <Typography variant="h6" align="center">
         Loading...
+      </Typography>
+    );
+  }
+  if (error) {
+    return (
+      <Typography variant="h6" align="center">
+        `Oh no, an error! ${error.message}`
       </Typography>
     );
   }

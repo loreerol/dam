@@ -3,7 +3,7 @@ import { Asset } from "../../../types";
 import { FileType } from "../types";
 
 interface useFilteredDataProps {
-  data: Asset[];
+  assets: Asset[] | undefined;
   fileType: FileType | undefined;
   searchBy: string;
   showFavorites: boolean;
@@ -11,16 +11,16 @@ interface useFilteredDataProps {
 }
 
 const useFilteredData = ({
-  data,
+  assets,
   fileType,
   searchBy,
   showFavorites,
   favorites,
 }: useFilteredDataProps): Asset[] => {
   return useMemo(() => {
-    if (!data.length) return [];
+    if (!assets?.length) return [];
 
-    return data.filter((item: Asset) => {
+    return assets.filter((item: Asset) => {
       const matchesFileType = fileType
         ? item.mimeType.toLowerCase().startsWith(fileType.toLowerCase())
         : true;
@@ -34,7 +34,7 @@ const useFilteredData = ({
 
       return matchesFileType && matchesSearch && matchesFavorites;
     });
-  }, [data, fileType, searchBy, favorites, showFavorites]);
+  }, [assets, fileType, searchBy, favorites, showFavorites]);
 };
 
 export default useFilteredData;

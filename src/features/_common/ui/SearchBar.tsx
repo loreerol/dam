@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 
+// To do: Make this more reusable by accepting styling props
+
 interface SearchBarProps {
   label: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 

@@ -9,7 +9,8 @@ import DownloadIcon from "@mui/icons-material/Download";
 interface DownloadModalProps {
   modalOpen: boolean;
   toggleModal: () => void; 
-  image: string; // Should be the actual image URL for download
+  image: string;
+  fileSize: number;
   data:  {
     formattedFileName: string;
     formatedCreatedDate: string;
@@ -31,7 +32,7 @@ const style = {
   width: 500
 };
 
-const DownloadModal = ({ modalOpen, toggleModal, image, data }: DownloadModalProps) => {
+const DownloadModal = ({ modalOpen, toggleModal, image, fileSize, data }: DownloadModalProps) => {
   const handleDownload = async () => {
   
       alert('Sorry, this is not implemented yet');
@@ -52,6 +53,9 @@ const DownloadModal = ({ modalOpen, toggleModal, image, data }: DownloadModalPro
           <Typography variant="h6" component="h2">
             {`Filetype: ${data.fileExtention} ${data.fileType}`}
           </Typography>
+          <Typography variant="h6" component="h2">
+            {`File size: ${fileSize}`}
+          </Typography>
           
           <Button
             variant="contained"
@@ -59,6 +63,13 @@ const DownloadModal = ({ modalOpen, toggleModal, image, data }: DownloadModalPro
             onClick={handleDownload}
           >
             Download
+          </Button>
+          <Button
+          sx={{marginLeft: "10px"}}
+            variant="contained"
+            onClick={toggleModal}
+          >
+            Close
           </Button>
         </Container>
       </Box>

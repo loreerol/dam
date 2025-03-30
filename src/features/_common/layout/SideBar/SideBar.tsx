@@ -30,15 +30,13 @@ const SideBar = () => {
           <DropDown<FileType>
             title="File Type"
             options={fileTypes}
-            onChange={setFileType}
-          />
+            onChange={setFileType} value={"Application"}          />
         </ListItem>
         <ListItem>
           <DropDown<SortOption>
             title="Sort By"
             options={sortOptions}
-            onChange={setSortBy}
-          />
+            onChange={setSortBy} value={"Created Date"}          />
         </ListItem>
         <ListItem>
           <FavoritesToggle checked={showFavorites} onChange={toggleShowFavorites}/>
