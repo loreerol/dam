@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import SearchBar from "./SearchBar";
-import { FilterContext } from "../../contexts/FilterContext";
+import SearchBar from "../../ui/SearchBar";
+import { FilterContext } from "../../../filtering/contexts/FilterContext";
 
 const Header = () => {
   const { setSearchBy } = useContext(FilterContext);

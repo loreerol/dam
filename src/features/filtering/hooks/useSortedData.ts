@@ -1,9 +1,10 @@
 import { useMemo } from "react";
-import { Asset, Filter } from "../components/types";
+import { Asset } from "../../../types";
+import { SortOption } from "../types";
 
 interface useSortedDataProps {
   data: Asset[];
-  sortBy: Filter | undefined;
+  sortBy: SortOption | undefined;
 }
 
 const useSortedData = ({ data, sortBy }: useSortedDataProps) => {

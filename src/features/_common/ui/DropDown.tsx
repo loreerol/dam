@@ -15,7 +15,7 @@ const DropDown = <T extends string>({
   options, 
   onChange 
 }: DropDownProps<T>) => {
-  const [option, setOption] = useState<T>(options[0]);
+  const [option, setOption] = useState<T>();
 
   const handleChange = (event: SelectChangeEvent) => {
     const value = event.target.value as T;
@@ -31,6 +31,7 @@ const DropDown = <T extends string>({
         onChange={handleChange}
         label={title}
       >
+        <MenuItem value={""}> None</MenuItem>
         {options.map((option) => (
           <MenuItem key={option} value={option}>
             {option}

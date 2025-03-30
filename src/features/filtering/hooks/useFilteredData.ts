@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { Asset, FileType } from "../components/types";
+import { Asset } from "../../../types";
+import { FileType } from "../types";
 
 interface useFilteredDataProps {
   data: Asset[];

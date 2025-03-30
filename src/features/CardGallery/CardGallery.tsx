@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import ContentCard from "./ContentCard";
-import { Asset } from "../types";
+import { Asset } from "../../types";
 
 interface CardGalleryProps {
   data: Asset[];
@@ -21,7 +21,8 @@ const CardGallery = ({ data, loading }: CardGalleryProps) => {
   }
 
   return (
-    <Box sx={{ width: "100%", marginTop: "50px" }}>
+    // TO DO: Replace hard-coded margins with a better way to account for the sidebar's width
+    <Box sx={{ marginTop: "80px", marginLeft:'calc(20% - 200px)', marginRight: "20%", width:'100%'}}>
       {data.length === 0 ? (
         <Typography variant="h6" align="center">
           No items to display, please try removing a filter or searching by another

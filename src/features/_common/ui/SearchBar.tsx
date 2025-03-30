@@ -1,6 +1,8 @@
 import React from 'react';
-import { InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
 
 interface SearchBarProps {
   label: string;
@@ -8,7 +10,7 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({handleChange, label}:SearchBarProps) => (
-  <div style={{
+  <Box style={{
     display: 'flex', 
     backgroundColor: 'rgba(255, 255, 255, 0.15)', 
     borderRadius: 4, 
@@ -24,7 +26,7 @@ const SearchBar = ({handleChange, label}:SearchBarProps) => (
       aria-label={label}
       onChange={handleChange}
     />
-  </div>
+  </Box>
 );
 
 export default SearchBar;
