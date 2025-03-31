@@ -17,7 +17,7 @@ const useSortedData = ({ data, sortBy }: useSortedDataProps) => {
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
       );
     }
-
+    
     if (sortBy === "File Size") {
       return [...data].sort((a, b) => a.fileSize - b.fileSize);
     }

@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# Digital Asset Management (DAM) System Frontend Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This repo contains a frontend interface for a DAM system. This interface enables internal teams to efficiently search, filter, bookmark and preview digital content.
 
-In the project directory, you can run:
+## Installation & Setup
 
-### `npm start`
+```
+git clone <repository-url>
+cd <project-folder>
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This will start the application in development mode. Open `http://localhost:3000` in your bowser to view it.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Running the tests
 
-### `npm test`
+```
+npm test
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run this command in the root folder to see the tests run.
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Asset Browsing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- A card based layout was used to display the assets so that user could efficiently scan though the available items.
+- The cards display uncropped previews of the asset as well as their related metadata.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Searching & Filtering & Sorting
 
-### `npm run eject`
+- A search bar is located in the header of the page for easy location.
+- The sidebar contains a filter for filtering by file type
+- The sidebar also contains sorting options for sorting by file size, created date, and modified date
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Favoriting
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Allows users to save assets for later reference by clicking on the heart icon on each image.
+- A toggle on the sidebar allows users to filter for only favorited items.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Download Modal
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Allows users to view assets in isolation allong with their metadata.
 
-## Learn More
+## Technical Stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React & Create React App - used to generate a react project with included build setup
+- Typescript - for typesaftey and maintainabiliy
+- React Query - used to mock the API request and provide pagination
+- MUI - provided UI components for fast prototyping
+- DOMPurity - Added for input sanitization
+- Jest - Unit testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Folder/Component Structure
+
+- A feature based folder structure was used, balancing maintainability with easy of use.
+- Stateful parent components were used to compose smaller, reusable UI components, for scalability and maintainability.
+
+## State Management
+
+- React Context was used for internal state, this avoids prop-drilling and improves maintainability
+- React Query was used for API state management which also enables caching, pagination and dedupping.
+
+## Performance Optimization
+
+- Paginated API response allows for performant page loading.
+- Prefetching before the next page loads provides seamless loading.
+- Memoized calculations of applied filters and sorting as well as data formatting, to prevent unneeded rerenders.
+
+## Secure Coding Practises
+
+- User input in the search field was sanitised before use in the application.
+
+## Testing
+
+- Jest unit tests were added for the `useFilteredData` hook.
+- Unfortunately only minimal testing was included due to time contraints.
+
+## Folders & Files of Note
+- `src/pages/App.tsx` - The main parent for my application, where the API data is fetched, filtered and passed down. 
+- `dam/src/features/_common/ui/DropDown.tsx` - Reusable with generic types. Able to accept my specific `FileType` and `SortOption` types. 
+- `src/features/filtering` - folder where my filtering context, hooks, types and tests are organised. 
+- `src/features/hooks` - folder where my React Query code is organised
+
+## Challenges
+
+1. Balancing speed against code polish. It is hard to determine what is or is not over engineering when you are used to working on enterprise code. I tried to provide a reasonable amount polish while also completing the features I wanted to see. In the end perhaps I could have made it less feature rich to shave off some time. Favoriting and the download modal were not needed, although they did not take very much time as they reused logic already created. I could have spent less time on styling the components, however by force of habit I styled them as I went. If I was to do this project a second time, I would have focused less on styling. To be fully transparent, I did go over time by about a couple of hours. I really enjoy building UI and this was my first take home assigment, I might have been too enthusiastic about completing it.  
+
+2. I lost way too much time to choosing a file structure. Ultimately I went with a structure I am familiar with rather than overthink where I could make changes to suit a smaller project of this size.
+
+3. It was very strange to be writing filtering and searching on the frontend. I am use to writing filters on the backend to be used through API interaction. They are all bunched up in one hook for now, which is not ideal. I believe that in a real application they would not be written on the frontend so I decided to not over engineer this part and leave it as it is. This also caused an unforeseen problem when I added in pagination, the pagination causes the filtering and sorting to only apply to the currently loaded items.
+
+## Improvements I would make next
+
+- Moving filtering searching and sorting to the backend. For performance, and to work better with pagination/infinite scrolling.
+- Add infinite scrolling to the gallery page loading. This would be very simple to do if I had time, we need an observer to tell the page when to autoload the next set of data.
+- Testing. I only added testing for the `useFilteredData` hook. I chose that hook as it had the most complex calculations to make. More component and hook unit tests are needed, as well as in a perfect world there would be E2E tests.
+- It would be great to have skeleton components populate the page when the cards are loading.
