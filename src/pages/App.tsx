@@ -9,28 +9,44 @@ import { FilterContext } from "../features/filtering/contexts/FilterContext";
 import { FavoritesContext } from "../features/filtering/contexts/FavoritesContext";
 import useFilteredData from "../features/filtering/hooks/useFilteredData";
 import useSortedData from "../features/filtering/hooks/useSortedData";
-import { useAssets } from "../hooks";
+import { useAssets } from "../features/hooks";
 
 const App = () => {
   const { fileType, sortBy, searchBy } = useContext(FilterContext);
   const { favorites, showFavorites } = useContext(FavoritesContext);
-  const { data: assets, isLoading, error } = useAssets();
+  const {
+    data,
+    isLoading,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useAssets();
+
+  const allAssets = data?.pages.flatMap((page) => page.data) || [];
 
   const filteredData = useFilteredData({
-    assets,
+    assets: allAssets,
     fileType,
     searchBy,
     favorites,
     showFavorites,
   });
+
   const sortedData = useSortedData({ data: filteredData, sortBy });
 
   return (
     <Box display="flex">
       <Header />
       <SideBar />
-
-      <GalleryPage data={sortedData} loading={isLoading} error={error} />
+      <GalleryPage
+        data={sortedData}
+        loading={isLoading}
+        error={error}
+        hasNextPage={hasNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+        fetchNextPage={fetchNextPage}
+      />
     </Box>
   );
 };

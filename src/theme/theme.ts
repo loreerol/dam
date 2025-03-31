@@ -8,21 +8,18 @@ const theme = createTheme({
     secondary: {
       main: "#dc004e",
     },
-    background:{
-      default: "#E8E8E6"
-    }
   },
   typography: {
     fontFamily: "Roboto, sans-serif",
     h6: {
       fontSize: "1rem",
       marginBottom: 15,
-      fontWeight: 600
+      fontWeight: 600,
     },
     body2: {
       lineHeight: 1,
-      marginBottom: 10
-    }
+      marginBottom: 10,
+    },
   },
 });
 

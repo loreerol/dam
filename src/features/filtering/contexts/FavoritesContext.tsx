@@ -28,7 +28,7 @@ export const FavoritesProvider = ({
     setFavorites((prevFavorites) =>
       prevFavorites.includes(id)
         ? prevFavorites.filter((fav) => fav !== id)
-        : [...prevFavorites, id]
+        : [...prevFavorites, id],
     );
   };
 

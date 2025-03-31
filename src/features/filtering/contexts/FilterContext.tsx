@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { FileType, SortOption } from "../types";
 
 interface FilterProviderProps {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
 type FilterContextType = {
@@ -12,7 +12,7 @@ type FilterContextType = {
   setFileType: (type: FileType) => void;
   setSortBy: (sort: SortOption) => void;
   setSearchBy: (sort: string) => void;
-}
+};
 
 export const FilterContext = createContext<FilterContextType>({
   fileType: undefined,
@@ -20,7 +20,7 @@ export const FilterContext = createContext<FilterContextType>({
   searchBy: "",
   setFileType: () => {},
   setSortBy: () => {},
-  setSearchBy: () => {}
+  setSearchBy: () => {},
 });
 
 export const FilterProvider = ({ children }: FilterProviderProps) => {
@@ -29,9 +29,17 @@ export const FilterProvider = ({ children }: FilterProviderProps) => {
   const [searchBy, setSearchBy] = useState("");
 
   return (
-    <FilterContext.Provider value={{ fileType, sortBy, searchBy, setFileType, setSortBy, setSearchBy }}>
+    <FilterContext.Provider
+      value={{
+        fileType,
+        sortBy,
+        searchBy,
+        setFileType,
+        setSortBy,
+        setSearchBy,
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );
 };
-

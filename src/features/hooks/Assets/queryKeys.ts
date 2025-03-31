@@ -1,3 +1,3 @@
 export const assetQueryKeys = {
-  all: () => ["assets"]
+  all: () => ["assets"],
 };

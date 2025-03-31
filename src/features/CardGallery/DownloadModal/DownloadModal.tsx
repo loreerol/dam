@@ -8,10 +8,10 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 interface DownloadModalProps {
   modalOpen: boolean;
-  toggleModal: () => void; 
+  toggleModal: () => void;
   image: string;
   fileSize: number;
-  data:  {
+  data: {
     formattedFileName: string;
     formatedCreatedDate: string;
     formatedModiedDate: string;
@@ -21,31 +21,37 @@ interface DownloadModalProps {
 }
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   border: "1px solid grey",
-  bgcolor: 'white',
+  bgcolor: "white",
   p: "2em",
   borderRadius: 2,
-  width: 500
+  width: 500,
 };
 
-const DownloadModal = ({ modalOpen, toggleModal, image, fileSize, data }: DownloadModalProps) => {
+const DownloadModal = ({
+  modalOpen,
+  toggleModal,
+  image,
+  fileSize,
+  data,
+}: DownloadModalProps) => {
   const handleDownload = async () => {
-  
-      alert('Sorry, this is not implemented yet');
+    alert("Sorry, this is not implemented yet");
   };
 
   return (
     <Modal
       open={modalOpen}
       onClose={toggleModal}
-      sx={{ '& .MuiBackdrop-root': { backgroundColor: 'transparent' } }}
+      sx={{ "& .MuiBackdrop-root": { backgroundColor: "transparent" } }}
     >
       <Box sx={style}>
         <Container sx={{ width: "75%" }}>
+          {/* In the real work this component would need to have a video and audio player, but I am only using the mock data */}
           <MediaContainer image={image} altText={data.formattedFileName} />
           <Typography variant="h6" component="h2">
             {data.formattedFileName}
@@ -56,16 +62,17 @@ const DownloadModal = ({ modalOpen, toggleModal, image, fileSize, data }: Downlo
           <Typography variant="h6" component="h2">
             {`File size: ${fileSize}`}
           </Typography>
-          
+
           <Button
             variant="contained"
+            color="success"
             startIcon={<DownloadIcon />}
             onClick={handleDownload}
           >
             Download
           </Button>
           <Button
-          sx={{marginLeft: "10px"}}
+            sx={{ marginLeft: "10px" }}
             variant="contained"
             onClick={toggleModal}
           >

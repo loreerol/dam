@@ -12,16 +12,18 @@ import { FilterContext } from "../../../filtering/contexts/FilterContext";
 import { FavoritesContext } from "../../../filtering/contexts/FavoritesContext";
 import Box from "@mui/material/Box";
 
-
 const drawerWidth = "200px";
 
 const fileTypes: FileType[] = ["Application", "Image", "Video"];
-const sortOptions: SortOption[] = ["File Size", "Created Date", "Modified Date"];
+const sortOptions: SortOption[] = [
+  "File Size",
+  "Created Date",
+  "Modified Date",
+];
 
 const SideBar = () => {
   const { setFileType, setSortBy } = useContext(FilterContext);
-  const {showFavorites, toggleShowFavorites} = useContext(FavoritesContext);
-  
+  const { showFavorites, toggleShowFavorites } = useContext(FavoritesContext);
 
   const drawer = (
     <Box>
@@ -30,16 +32,21 @@ const SideBar = () => {
           <DropDown<FileType>
             title="File Type"
             options={fileTypes}
-            onChange={setFileType} value={"Application"}          />
+            onChange={setFileType}
+          />
         </ListItem>
         <ListItem>
           <DropDown<SortOption>
             title="Sort By"
             options={sortOptions}
-            onChange={setSortBy} value={"Created Date"}          />
+            onChange={setSortBy}
+          />
         </ListItem>
         <ListItem>
-          <FavoritesToggle checked={showFavorites} onChange={toggleShowFavorites}/>
+          <FavoritesToggle
+            checked={showFavorites}
+            onChange={toggleShowFavorites}
+          />
         </ListItem>
       </List>
     </Box>

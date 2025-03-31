@@ -16,7 +16,7 @@ const FavoritesToggle = ({ checked, onChange }: FavoritesToggleProps) => (
     icon={<FavoriteBorderIcon fontSize="small" />}
     checkedIcon={<FavoriteIcon fontSize="small" />}
     color="error"
-    sx={{padding: 1}}
+    sx={{ padding: 1 }}
   />
 );
 

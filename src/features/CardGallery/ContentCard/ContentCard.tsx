@@ -36,7 +36,7 @@ const ContentCard = ({ item }: ContentCardProps) => {
       fileExtention: getFileExtention(item.mimeType),
       fileType: getFileType(item.mimeType),
     }),
-    [item]
+    [item],
   );
   const { isTruncated, textRef } = useIsTruncated(cardData.formattedFileName);
 
@@ -86,7 +86,7 @@ const ContentCard = ({ item }: ContentCardProps) => {
           >
             <FavoriteIcon color={isFavorited ? "error" : "inherit"} />
           </IconButton>
-          <IconButton aria-label="download">
+          <IconButton aria-label="download" onClick={toggleModal}>
             <DownloadIcon />
           </IconButton>
         </CardActions>

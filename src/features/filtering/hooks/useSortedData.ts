@@ -14,7 +14,7 @@ const useSortedData = ({ data, sortBy }: useSortedDataProps) => {
     if (sortBy === "Created Date") {
       return [...data].sort(
         (a, b) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
       );
     }
 
@@ -23,7 +23,10 @@ const useSortedData = ({ data, sortBy }: useSortedDataProps) => {
     }
 
     if (sortBy === "Modified Date") {
-        return [...data].sort((a,b)=> new Date(a.modifiedAt).getTime() - new Date(b.modifiedAt).getTime())
+      return [...data].sort(
+        (a, b) =>
+          new Date(a.modifiedAt).getTime() - new Date(b.modifiedAt).getTime(),
+      );
     }
 
     return data;
