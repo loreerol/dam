@@ -99,3 +99,4 @@ Run this command in the root folder to see the tests run.
 - Add infinite scrolling to the gallery page loading. This would be very simple to do if I had time, we need an observer to tell the page when to autoload the next set of data.
 - Testing. I only added testing for the `useFilteredData` hook. I chose that hook as it had the most complex calculations to make. More component and hook unit tests are needed, as well as in a perfect world there would be E2E tests.
 - It would be great to have skeleton components populate the page when the cards are loading.
+- The favoriting/bookmarking should also be done though an API interaction and the users favorites should be stored in the DB
